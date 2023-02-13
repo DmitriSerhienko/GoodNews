@@ -1,4 +1,4 @@
-package com.dimas.goodnews.presentation.fragments
+package com.dimas.goodnews.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
@@ -8,9 +8,8 @@ import com.dimas.goodnews.data.network.NewsRepositoryImpl
 import com.dimas.goodnews.data.network.models.NewsResponse
 import com.dimas.goodnews.utils.Resource
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
-class StartViewModel(app: Application, val newsRepository: NewsRepositoryImpl) : ViewModel() {
+class StartViewModel(val app: Application, val newsRepository: NewsRepositoryImpl) : ViewModel() {
 
     val startNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var newsPage = 1

@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimas.goodnews.R
@@ -15,9 +13,9 @@ import com.dimas.goodnews.data.network.models.Article
 import com.dimas.goodnews.databinding.FragmentStartBinding
 import com.dimas.goodnews.presentation.MainActivity
 import com.dimas.goodnews.presentation.adapters.ArticleAdapter
+import com.dimas.goodnews.presentation.viewmodels.StartViewModel
 import com.dimas.goodnews.utils.Resource
 import kotlinx.android.synthetic.main.fragment_start.*
-
 
 class StartFragment : Fragment() {
     private var _binding: FragmentStartBinding? = null
@@ -25,8 +23,6 @@ class StartFragment : Fragment() {
 
     lateinit var newsAdapter: ArticleAdapter
     lateinit var viewModel: StartViewModel
-    lateinit var article: Article
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,10 +56,11 @@ class StartFragment : Fragment() {
                 }
             }
         }
-        newsAdapter.onArticleClickListener =  {
-                launchDetailFragment(it)
+        newsAdapter.onArticleClickListener = {
+            launchDetailFragment(it)
         }
     }
+
     private fun launchDetailFragment(article: Article) {
         val bundle = Bundle().apply {
             putSerializable("article", article)
@@ -74,15 +71,6 @@ class StartFragment : Fragment() {
         )
     }
 
-
-//    private fun launchDetailFragment(article: Article) {
-//        supportFragmentManager.popBackStack()
-//        supportFragmentManager
-//            .beginTransaction()
-//            .replace(R.id.fragment_container, CoinDetailFragment.newInstance(fromSymbol))
-//            .addToBackStack(null)
-//            .commit()
-//    }
 
     private fun initAdapter() {
         newsAdapter = ArticleAdapter(requireContext())

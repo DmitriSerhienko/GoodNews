@@ -1,4 +1,4 @@
-package com.dimas.goodnews.presentation.fragments
+package com.dimas.goodnews.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -14,4 +14,7 @@ class NewsViewModelProviderFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return StartViewModel(app, newsRepository) as T
     }
+
+
+
 }
