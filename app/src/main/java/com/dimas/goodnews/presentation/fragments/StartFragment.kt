@@ -5,10 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimas.goodnews.R
+import com.dimas.goodnews.data.network.models.Article
 import com.dimas.goodnews.databinding.FragmentStartBinding
 import com.dimas.goodnews.presentation.MainActivity
 import com.dimas.goodnews.presentation.adapters.ArticleAdapter
@@ -21,8 +24,9 @@ class StartFragment : Fragment() {
     private val binding get() = _binding ?: throw RuntimeException("FragmentStartBinding == null")
 
     lateinit var newsAdapter: ArticleAdapter
-
     lateinit var viewModel: StartViewModel
+    lateinit var article: Article
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,14 +59,37 @@ class StartFragment : Fragment() {
                     pag_pr_bar.visibility = View.VISIBLE
                 }
             }
-
+        }
+        newsAdapter.onArticleClickListener =  {
+                launchDetailFragment(it)
         }
     }
+    private fun launchDetailFragment(article: Article) {
+        val bundle = Bundle().apply {
+            putSerializable("article", article)
+        }
+        findNavController().navigate(
+            R.id.action_startFragment_to_detailsFragment,
+            bundle
+        )
+    }
+
+
+//    private fun launchDetailFragment(article: Article) {
+//        supportFragmentManager.popBackStack()
+//        supportFragmentManager
+//            .beginTransaction()
+//            .replace(R.id.fragment_container, CoinDetailFragment.newInstance(fromSymbol))
+//            .addToBackStack(null)
+//            .commit()
+//    }
+
     private fun initAdapter() {
         newsAdapter = ArticleAdapter(requireContext())
         news_adapter.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
+
         }
     }
 

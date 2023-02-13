@@ -11,4 +11,12 @@ data class Article(
     val title: String,
     val url: String,
     val urlToImage: String
-): Serializable
+): Serializable {
+    override fun hashCode(): Int {
+        var result = url.hashCode()
+        if(url.isEmpty()){
+            result = url.hashCode()
+        }
+        return result
+    }
+}
