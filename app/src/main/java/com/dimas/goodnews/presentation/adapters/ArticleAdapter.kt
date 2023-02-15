@@ -35,9 +35,4 @@ class ArticleAdapter(private val context: Context) :
         }
     }
 
-
-//    interface OnNewsClickListener {
-//        fun onNewsClick(article: Article)
-//    }
-
 }
