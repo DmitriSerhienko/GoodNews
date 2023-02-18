@@ -4,8 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dimas.goodnews.data.network.NewsRepositoryImpl
+import com.dimas.goodnews.data.network.models.Article
 import com.dimas.goodnews.data.network.models.NewsResponse
-import com.dimas.goodnews.utils.Resource
+import com.dimas.goodnews.domain.utils.Resource
 import kotlinx.coroutines.launch
 
 class SearchViewModel : ViewModel() {
@@ -32,5 +33,9 @@ class SearchViewModel : ViewModel() {
                 searchNewsLiveData.postValue(Resource.Error(message = response.message()))
             }
         }
+
+    fun saveArticle(article: Article) = viewModelScope.launch {
+        newsRepository.insertNewsToDb(article)
+    }
 
 }

@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimas.goodnews.R
 import com.dimas.goodnews.data.network.models.Article
 import com.dimas.goodnews.databinding.FragmentStartBinding
+import com.dimas.goodnews.domain.utils.Resource
 import com.dimas.goodnews.presentation.MainActivity
 import com.dimas.goodnews.presentation.adapters.ArticleAdapter
 import com.dimas.goodnews.presentation.viewmodels.StartViewModel
-import com.dimas.goodnews.utils.Resource
 import kotlinx.android.synthetic.main.fragment_start.*
+import kotlin.random.Random
 
 class StartFragment : Fragment() {
     private var _binding: FragmentStartBinding? = null
@@ -56,6 +57,13 @@ class StartFragment : Fragment() {
                 }
             }
         }
+        newsAdapter.onSaveClickListener = {
+            if (it.id == null) {
+                it.id = Random.nextInt(0, 1000)
+            }
+            viewModel.saveArticle(it)
+        }
+
         newsAdapter.onArticleClickListener = {
             launchDetailFragment(it)
         }

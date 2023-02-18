@@ -5,4 +5,5 @@
     <string name="search">Пошук новин</string>
     <string name="search_hint">Введіть запит</string>
     <string name="popular_news">Актуальні новини</string>
+    <string name="saved_news">Збережені новини</string>
 </resources>

@@ -10,15 +10,16 @@
         android:id="@+id/header_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="18dp"
+        android:gravity="center"
         android:text="@string/search"
+        android:textColor="@color/teal"
         android:textSize="20sp"
-        android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ed_search"
@@ -28,6 +29,7 @@
         android:layout_marginHorizontal="14dp"
         android:paddingVertical="24dp"
         android:hint="@string/search_hint"
+        android:drawableEnd="@drawable/ic_search"
         android:text=""
         android:textColor="@color/gray_black"
         android:textSize="17sp"

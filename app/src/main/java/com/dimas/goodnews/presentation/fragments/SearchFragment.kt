@@ -14,14 +14,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimas.goodnews.R
 import com.dimas.goodnews.data.network.models.Article
 import com.dimas.goodnews.databinding.FragmentSearchBinding
+import com.dimas.goodnews.domain.utils.Resource
 import com.dimas.goodnews.presentation.adapters.ArticleAdapter
 import com.dimas.goodnews.presentation.viewmodels.SearchViewModel
-import com.dimas.goodnews.utils.Resource
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -75,8 +76,18 @@ class SearchFragment : Fragment() {
             newsAdapter.onArticleClickListener = {
                 launchDetailFragment(it)
             }
+            newsAdapter.onSaveClickListener = {
+                if (it.id == null) {
+                    it.id = Random.nextInt(0, 1000)
+                }
+                save(it)
+            }
         }
 
+    }
+
+    private fun save(article: Article) {
+        viewModel.saveArticle(article)
     }
 
     private fun launchDetailFragment(article: Article) {
