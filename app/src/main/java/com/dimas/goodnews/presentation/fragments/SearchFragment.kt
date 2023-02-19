@@ -14,9 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimas.goodnews.R
 import com.dimas.goodnews.data.network.models.Article
 import com.dimas.goodnews.databinding.FragmentSearchBinding
-import com.dimas.goodnews.domain.utils.Resource
+import com.dimas.goodnews.utils.Resource
+import com.dimas.goodnews.presentation.MainActivity
 import com.dimas.goodnews.presentation.adapters.ArticleAdapter
-import com.dimas.goodnews.presentation.viewmodels.SearchViewModel
+import com.dimas.goodnews.presentation.viewmodels.NewsViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
@@ -29,7 +30,7 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding ?: throw RuntimeException("FragmentSearchBinding == null")
 
     lateinit var newsAdapter: ArticleAdapter
-    private val viewModel by viewModels<SearchViewModel>()
+    lateinit var viewModel: NewsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +42,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = (activity as MainActivity).viewModel
 
         var job: Job? = null
         ed_search.addTextChangedListener { text: Editable? ->
@@ -83,7 +85,6 @@ class SearchFragment : Fragment() {
                 save(it)
             }
         }
-
     }
 
     private fun save(article: Article) {

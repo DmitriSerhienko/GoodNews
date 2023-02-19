@@ -9,18 +9,16 @@ import com.dimas.goodnews.R
 import com.dimas.goodnews.data.db.Repository
 import com.dimas.goodnews.data.network.NewsRepositoryImpl
 import com.dimas.goodnews.databinding.ActivityMainBinding
+import com.dimas.goodnews.presentation.viewmodels.NewsViewModel
 import com.dimas.goodnews.presentation.viewmodels.NewsViewModelProviderFactory
-import com.dimas.goodnews.presentation.viewmodels.SaveNewsViewModelProviderFactory
-import com.dimas.goodnews.presentation.viewmodels.SaveViewModel
-import com.dimas.goodnews.presentation.viewmodels.StartViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("ActivityMainBinding == null")
 
-    lateinit var viewModel: StartViewModel
-    lateinit var viewModel1: SaveViewModel
+    lateinit var viewModel: NewsViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,14 +35,7 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(
             this@MainActivity,
             viewModelProviderFactory
-        ).get(StartViewModel::class.java)
-
-
-        val viewModelProviderFactory1 = SaveNewsViewModelProviderFactory(newsRepository)
-        viewModel1 = ViewModelProvider(
-            this@MainActivity,
-            viewModelProviderFactory1
-        ).get(SaveViewModel::class.java)
+        ).get(NewsViewModel::class.java)
 
         bottom_nav_menu.setupWithNavController(
             navController = navController

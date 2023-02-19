@@ -1,4 +1,4 @@
-package com.dimas.goodnews.domain.utils
+package com.dimas.goodnews.utils
 
 sealed class Resource<T>(
     val data: T? = null,

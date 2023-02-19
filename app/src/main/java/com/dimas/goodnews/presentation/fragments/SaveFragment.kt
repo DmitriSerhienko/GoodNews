@@ -15,7 +15,7 @@ import com.dimas.goodnews.data.network.models.Article
 import com.dimas.goodnews.databinding.FragmentSaveBinding
 import com.dimas.goodnews.presentation.MainActivity
 import com.dimas.goodnews.presentation.adapters.ArticleAdapter
-import com.dimas.goodnews.presentation.viewmodels.SaveViewModel
+import com.dimas.goodnews.presentation.viewmodels.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class SaveFragment : Fragment() {
@@ -23,7 +23,7 @@ class SaveFragment : Fragment() {
     private val binding get() = _binding ?: throw RuntimeException("FragmentSaveBinding == null")
 
     lateinit var newsAdapter: ArticleAdapter
-    lateinit var viewModel: SaveViewModel
+    lateinit var viewModel: NewsViewModel
 
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class SaveFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as MainActivity).viewModel1
+        viewModel = (activity as MainActivity).viewModel
         initAdapter()
         newsAdapter.onArticleClickListener = {
             launchDetailFragment(it)
