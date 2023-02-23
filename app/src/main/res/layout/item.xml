@@ -50,6 +50,7 @@
             android:fontWeight="700"
             android:text="Musk buy Twitter"/>
     </LinearLayout>
+
     <ImageView
         android:id="@+id/icon_favourite"
         android:layout_width="40dp"

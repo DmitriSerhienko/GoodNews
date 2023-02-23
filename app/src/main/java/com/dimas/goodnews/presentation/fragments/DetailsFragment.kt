@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.dimas.goodnews.data.network.models.Article
 import com.dimas.goodnews.databinding.FragmentDetailsBinding
-import com.dimas.goodnews.presentation.adapters.ArticleAdapter
 
 
-class DetailsFragment(): Fragment() {
+class DetailsFragment() : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("FragmentDetailsBinding == null")

@@ -5,4 +5,4 @@ import com.dimas.goodnews.databinding.ItemBinding
 
 class ArticleViewHolder(
     val binding: ItemBinding
-): RecyclerView.ViewHolder(binding.root)
+) : RecyclerView.ViewHolder(binding.root)
