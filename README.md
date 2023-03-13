@@ -3,7 +3,7 @@ GoodNews
 
 App asks on server: https://newsapi.org/  start news. On Search Fragment u can find some new. Also save new in database on Save Fragment and delete by swipe
 
-Main Stack: Retrofit, Room, ViewModel, OkHttp, Navigation, Hilt, Android Jetpack Navigation
+Main Stack: Retrofit, Room, ViewModel, OkHttp, Navigation, Android Jetpack Navigation
 
 Few Screens:
 
